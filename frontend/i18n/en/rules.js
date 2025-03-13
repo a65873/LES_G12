@@ -10,6 +10,10 @@ export default {
   keyNameRules: {
     duplicated: 'The key is already used.'
   },
+  emailRules: {
+    emailRequired: 'Please insert email',
+    invalidEmail: 'Stupid'
+  },
   userNameRules: {
     userNameRequired: 'User name is required',
     userNameLessThan30Chars: 'User name must be less than 30 characters'

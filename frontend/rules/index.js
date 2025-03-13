@@ -7,6 +7,13 @@ export const labelNameRules = (msg) => {
   return [(v) => !!v || msg.labelRequired, (v) => (v && v.length <= 30) || msg.labelLessThan30Chars]
 }
 
+export const emailRules = (msg) => {
+  const validEmail = /^[^\s@]+@[^\s@]+.[^\s@]+$/
+  return [
+    (v) => !!v || msg.emailRequired,
+    (v) => !!validEmail.test(v) || msg.invalidEmail
+  ]
+}
 // Rules for project member.
 export const userNameRules = (msg) => {
   return [
@@ -43,6 +50,12 @@ export const passwordRules = (msg) => {
   ]
 }
 
+export const passwordRulesAgain = (msg) => {
+  return [
+    (v) => !!v || msg.passwordRequired,
+    (v) => (v && v.length <= 30) || msg.passwordLessThan30Chars
+  ]
+}
 export const templateNameRules = () => {
   return [(v) => !!v || 'Name is required']
 }
