@@ -1,5 +1,5 @@
 export default {
-  mainTitle: 'Text Annotation for Humans',
+  mainTitle: 'FUNCIONOU Text Annotation for FROGS',
   getStarted: 'Get Started',
   test: 'Teste',
   startAnnotation: 'Start Annotation',
