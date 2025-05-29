@@ -9,7 +9,10 @@ export const labelNameRules = (msg) => {
 
 export const emailRules = (msg) => {
   const validEmail = /^[^\s@]+@[^\s@]+.[^\s@]+$/
-  return [(v) => !!v || msg.emailRequired, (v) => !!validEmail.test(v) || msg.invalidEmail]
+  return [
+    (v) => !!v || msg.emailRequired,
+    (v) => !!validEmail.test(v) || msg.invalidEmail
+  ]
 }
 // Rules for project member.
 export const userNameRules = (msg) => {

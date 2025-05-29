@@ -1,0 +1,10 @@
+Easy way de parar e começar a db (postgres):
+
+sudo systemctl start postgresql
+sudo systemctl stop PostgreSQL
+
+-----------
+
+O que fazer com os files:
+api.service.js: frontend/services/api.service.js
+default.vue: frontend/layouts/default.vue

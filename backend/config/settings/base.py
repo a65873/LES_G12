@@ -75,6 +75,7 @@ INSTALLED_APPS = [
 
 
 MIDDLEWARE = [
+    'backend.config.middleware.CheckDBConnectionMiddleware', # para verificar a ligaçao a bd!!
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -193,8 +194,11 @@ LOGOUT_REDIRECT_URL = "/"
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "doccano",
+        "USER": "doccano",
+        "HOST": "127.0.0.1",
+        "PORT": "5432"
     }
 }
 # Change 'default' database configuration with $DATABASE_URL.
@@ -226,21 +230,25 @@ if DATABASES["default"].get("ENGINE") == "sql_server.pyodbc":
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SESSION_COOKIE_SECURE = env.bool("SESSION_COOKIE_SECURE", False)
 CSRF_COOKIE_SECURE = env.bool("CSRF_COOKIE_SECURE", False)
+
 CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS",
                                 [
                                     "http://127.0.0.1:3000",
                                     "http://0.0.0.0:3000",
                                     "http://localhost:3000",
-                                    "http://192.168.1.66:3000/"
+                                    "http://10.255.255.254:3000"
                                 ],
                                 )
+
 
 # Allow all host headers
 ALLOWED_HOSTS = ["*"]
 
 if DEBUG:
     CORS_ORIGIN_ALLOW_ALL = True
-    CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:3000", "http://0.0.0.0:3000", "http://localhost:3000", "http://192.168.1.66:3000"]
+
+    CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:3000", "http://0.0.0.0:3000", "http://localhost:3000", "http://10.255.255.254:3000"]
+
     CSRF_TRUSTED_ORIGINS += env.list("CSRF_TRUSTED_ORIGINS", [])
 
 # Batch size for importing data

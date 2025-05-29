@@ -46,6 +46,8 @@ export default Vue.extend({
   },
   layout: 'projects',
 
+  
+
   data() {
     return {
       dialogDelete: false,

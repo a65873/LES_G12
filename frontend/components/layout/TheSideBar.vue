@@ -39,6 +39,7 @@ import {
   mdiLabel,
   mdiPlayCircleOutline
 } from '@mdi/js'
+
 import { getLinkToAnnotationPage } from '~/presenter/linkToAnnotationPage'
 
 export default {
@@ -86,6 +87,12 @@ export default {
             this.project.canDefineLabel
         },
         {
+          icon: mdiBookOpenOutline,
+          text: 'Project Rules',
+          link: 'rules',
+          isVisible: true
+        },
+        {
           icon: mdiLabel,
           text: 'Relations',
           link: 'links',
@@ -115,6 +122,12 @@ export default {
           icon: mdiChartBar,
           text: this.$t('statistics.statistics'),
           link: 'metrics',
+          isVisible: this.isProjectAdmin
+        },
+        {
+          icon: mdiChartBar,
+          text: 'Reports',
+          link: 'reports/reports',
           isVisible: this.isProjectAdmin
         },
         {

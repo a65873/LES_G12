@@ -3,14 +3,9 @@ import ApiService from '@/services/api.service'
 export class APIAuthRepository {
   constructor(private readonly request = ApiService) {}
 
-  async register(
-    email: string,
-    username: string,
-    password1: string,
-    password2: string
-  ): Promise<void> {
-    const url = '/auth/registration'
-    await this.request.post(url, { email, username, password1, password2 })
+  async register(email: string,username: string,password1: string,password2:string): Promise<void> {
+      const url = '/users/create'
+      await this.request.post(url, { username, password1, password2, email})
   }
 
   async login(username: string, password: string): Promise<void> {
